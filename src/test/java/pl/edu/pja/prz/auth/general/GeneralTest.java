@@ -1,4 +1,4 @@
-package pl.edu.pja.prz.general;
+package pl.edu.pja.prz.auth.general;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
