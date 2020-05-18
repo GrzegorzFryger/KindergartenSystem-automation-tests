@@ -3,11 +3,8 @@ package pl.edu.pja.prz.auth.general;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import pl.edu.pja.prz.BaseAutomationTest;
 import pl.edu.pja.prz.TestCase;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * This test suite checks correctness of general application functions
@@ -35,6 +32,8 @@ public class GeneralTest extends BaseAutomationTest {
         driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", "user3@test.com");
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "user03");
         driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
+        // Menu panel with logged user name in top right corner
+        assertElementExists("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[1]/div/div/app-user/div/mat-card");
     }
 
     @Test
@@ -43,6 +42,7 @@ public class GeneralTest extends BaseAutomationTest {
         driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", "bad_email");
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "bad_password");
         driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
-        assertFalse(driver.findElements(By.xpath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span")).isEmpty());
+        // Login button
+        assertElementExists("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
     }
 }
