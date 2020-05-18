@@ -3,6 +3,7 @@ package pl.edu.pja.prz;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,8 +21,14 @@ public class DriverWrapper {
     private final WebDriverWait wait;
 
     public DriverWrapper() {
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(getChromeOptions());
         wait = new WebDriverWait(driver, TestConfiguration.WAIT_TIME_IN_SECONDS_BEFORE_TEST_FAILS);
+    }
+
+    public ChromeOptions getChromeOptions() {
+        ChromeOptions co = new ChromeOptions();
+        co.addArguments("--start-maximized");
+        return co;
     }
 
     public void makeScreenShot(String name) throws IOException {

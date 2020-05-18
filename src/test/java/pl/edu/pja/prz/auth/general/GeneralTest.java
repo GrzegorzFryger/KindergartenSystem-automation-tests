@@ -29,8 +29,11 @@ public class GeneralTest extends BaseAutomationTest {
     @Test
     @TestCase("PT_01")
     public void Should_LogIn_When_UserCredentialsAreCorrect() {
+        // Email text input
         driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", "user3@test.com");
+        // Password text input
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "user03");
+        // Sign in button
         driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
         // Menu panel with logged user name in top right corner
         assertElementExists("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[1]/div/div/app-user/div/mat-card");
@@ -39,8 +42,11 @@ public class GeneralTest extends BaseAutomationTest {
     @Test
     @TestCase("PT_02")
     public void Should_NotLogIn_When_UserCredentialsAreNotCorrect() {
+        // Email text input
         driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", "bad_email");
+        // Password text input
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "bad_password");
+        // Sign in button
         driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
         // Login button
         assertElementExists("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");

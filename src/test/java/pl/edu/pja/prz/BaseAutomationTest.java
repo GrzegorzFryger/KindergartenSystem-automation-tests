@@ -1,6 +1,7 @@
 package pl.edu.pja.prz;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
