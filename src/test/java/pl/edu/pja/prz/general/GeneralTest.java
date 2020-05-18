@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pl.edu.pja.prz.BaseAutomationTest;
+import pl.edu.pja.prz.TestCase;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -29,6 +30,7 @@ public class GeneralTest extends BaseAutomationTest {
     }
 
     @Test
+    @TestCase("PT_01")
     public void Should_LogIn_When_UserCredentialsAreCorrect() {
         driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", "user3@test.com");
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "user03");
@@ -36,6 +38,7 @@ public class GeneralTest extends BaseAutomationTest {
     }
 
     @Test
+    @TestCase("PT_02")
     public void Should_NotLogIn_When_UserCredentialsAreNotCorrect() {
         driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", "bad_email");
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "bad_password");
