@@ -34,13 +34,13 @@ public class GeneralTest extends BaseAutomationTest {
         // Password text input
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "user03");
         // Sign in button
-        driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
+        driver.clickByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
         // Menu panel with logged user name in top right corner
         assertElementExists("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[1]/div/div/app-user/div/mat-card");
         // Icon with user image
-        driver.clickElementByXPath("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[1]/div/div/app-user/div/mat-card/div/div[2]/img");
+        driver.clickByXPath("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[1]/div/div/app-user/div/mat-card/div/div[2]/img");
         // Log out button
-        driver.clickElementByXPath("//*[@id=\"mat-menu-panel-0\"]/div/button[2]");
+        driver.clickByXPath("//*[@id=\"mat-menu-panel-0\"]/div/button[2]");
         // Login button
         assertElementExists("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
     }
@@ -53,7 +53,7 @@ public class GeneralTest extends BaseAutomationTest {
         // Password text input
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "bad_password");
         // Sign in button
-        driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
+        driver.clickByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
         // Login button
         assertElementExists("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
     }

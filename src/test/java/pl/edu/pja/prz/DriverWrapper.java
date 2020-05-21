@@ -19,7 +19,7 @@ import static pl.edu.pja.prz.config.TestConfiguration.*;
 
 /**
  * pl.edu.pja.prz.DriverWrapper - delegates already existing WebDriver methods and adds custom methods.
- * The intent of this wrapper is to add customized behaviour to default wrapper.
+ * The intent of this wrapper is to add customized behaviour to default driver in order to enable easier usage of it.
  */
 public class DriverWrapper {
     private final WebDriver driver;
@@ -42,11 +42,11 @@ public class DriverWrapper {
         FileUtils.copyFile(scrFile, new File(resourcesDirectory + name + JPG_FORMAT));
     }
 
-    public void clickElementByXPath(String xPath) {
+    public void clickByXPath(String xPath) {
         findElement(By.xpath(xPath)).click();
     }
 
-    public void clickElementById(String id) {
+    public void clickById(String id) {
         findElement(By.id(id)).click();
     }
 

@@ -49,6 +49,6 @@ public abstract class BaseAutomationTest {
     protected void login(String username, String password) {
         driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", username);
         driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", password);
-        driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
+        driver.clickByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
     }
 }
