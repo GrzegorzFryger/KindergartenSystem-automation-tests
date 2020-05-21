@@ -17,8 +17,8 @@ public class GeneralTest extends BaseAutomationTest {
     }
 
     @AfterEach
-    public void close() {
-        driver.close();
+    public void quit() {
+        driver.quit();
     }
 
     @Test

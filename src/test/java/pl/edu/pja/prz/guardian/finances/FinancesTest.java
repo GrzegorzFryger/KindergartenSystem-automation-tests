@@ -18,7 +18,7 @@ public class FinancesTest extends BaseAutomationTest {
 
     @AfterEach
     public void close() {
-        driver.close();
+        driver.quit();
     }
 
     @Test
