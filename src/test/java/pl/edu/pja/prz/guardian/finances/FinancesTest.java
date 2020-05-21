@@ -3,8 +3,11 @@ package pl.edu.pja.prz.guardian.finances;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import pl.edu.pja.prz.BaseAutomationTest;
 import pl.edu.pja.prz.TestCase;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FinancesTest extends BaseAutomationTest {
 
@@ -25,11 +28,17 @@ public class FinancesTest extends BaseAutomationTest {
         // Finances button in left menu
         driver.clickElementByXPath("/html/body/app-root/app-guardian/div/mat-card/div[1]/div/mat-card/div/div[2]/app-navbar/div/div[3]/div/button");
         // Balance amount
-        assertElementExists("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-finances/div/div[1]/div/div[1]/div/mat-card[1]/div/div[2]");
+        String balance = driver.findElement(By.xpath("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-finances/div/div[1]/div/div[1]/div/mat-card[1]/div/div[2]"))
+                .getText();
+        assertTrue(balance.contains("PLN"));
         // Receivables amount
-        assertElementExists("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-finances/div/div[1]/div/div[1]/div/mat-card[2]/div/div[2]");
+        String receivables = driver.findElement(By.xpath("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-finances/div/div[1]/div/div[1]/div/mat-card[2]/div/div[2]"))
+                .getText();
+        assertTrue(receivables.contains("PLN"));
         // Liabilities amount
-        assertElementExists("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-finances/div/div[1]/div/div[1]/div/mat-card[3]/div/div[2]");
+        String liabilities = driver.findElement(By.xpath("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-finances/div/div[1]/div/div[1]/div/mat-card[3]/div/div[2]"))
+                .getText();
+        assertTrue(liabilities.contains("PLN"));
         // Table with receivables
         assertElementExists("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-finances/div/div[3]/app-receiables/mat-card");
     }
@@ -42,11 +51,14 @@ public class FinancesTest extends BaseAutomationTest {
         // Financial information of child
         driver.clickElementByXPath("//*[@id=\"mat-expansion-panel-header-0\"]/span[2]");
         // Child Balance
-        assertElementExists("//*[@id=\"cdk-accordion-child-0\"]/div/div[1]/div[1]/div/div[2]");
+        String childBalance = driver.findElement(By.xpath("//*[@id=\"cdk-accordion-child-0\"]/div/div[1]/div[1]/div/div[2]")).getText();
+        assertTrue(childBalance.contains("PLN"));
         // Child Receivables
-        assertElementExists("//*[@id=\"cdk-accordion-child-0\"]/div/div[1]/div[2]/div/div[2]");
+        String childReceivables = driver.findElement(By.xpath("//*[@id=\"cdk-accordion-child-0\"]/div/div[1]/div[2]/div/div[2]")).getText();
+        assertTrue(childReceivables.contains("PLN"));
         // Child Liabilities
-        assertElementExists("//*[@id=\"cdk-accordion-child-0\"]/div/div[1]/div[3]/div/div[2]");
+        String childLiabilities = driver.findElement(By.xpath("//*[@id=\"cdk-accordion-child-0\"]/div/div[1]/div[3]/div/div[2]")).getText();
+        assertTrue(childLiabilities.contains("PLN"));
         // Generate data for transfer
         driver.clickElementByXPath("//*[@id=\"cdk-accordion-child-0\"]/div/div[2]/button");
         // Organization name

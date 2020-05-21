@@ -37,6 +37,12 @@ public class GeneralTest extends BaseAutomationTest {
         driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
         // Menu panel with logged user name in top right corner
         assertElementExists("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[1]/div/div/app-user/div/mat-card");
+        // Icon with user image
+        driver.clickElementByXPath("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[1]/div/div/app-user/div/mat-card/div/div[2]/img");
+        // Log out button
+        driver.clickElementByXPath("//*[@id=\"mat-menu-panel-0\"]/div/button[2]");
+        // Login button
+        assertElementExists("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
     }
 
     @Test
