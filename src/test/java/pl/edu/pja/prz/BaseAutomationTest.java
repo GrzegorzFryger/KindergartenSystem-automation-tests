@@ -1,7 +1,6 @@
 package pl.edu.pja.prz;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,10 +22,16 @@ public abstract class BaseAutomationTest {
         driver.get(TestConfiguration.TESTED_APPLICATION_BASE_URL);
     }
 
-    public void login() {
-        driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", "user3@test.com");
-        driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", "user03");
-        driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
+    public void loginAsAdministrator() {
+        login("user3@test.com", "user03");
+    }
+
+    public void loginAsTeacher() {
+        login("user2@test.com", "user02");
+    }
+
+    public void loginAsUser() {
+        login("user1@test.com", "user01");
     }
 
     public void assertElementExists(String xPath) {
@@ -35,5 +40,11 @@ public abstract class BaseAutomationTest {
 
     public void assertElementDoesNotExists(String xPath) {
         assertTrue(driver.findElements(By.xpath(xPath)).isEmpty());
+    }
+
+    protected void login(String username, String password) {
+        driver.sendKeysByXPath("//*[@id=\"mat-input-0\"]", username);
+        driver.sendKeysByXPath("//*[@id=\"mat-input-1\"]", password);
+        driver.clickElementByXPath("/html/body/app-root/app-login/div/div/mat-card/mat-card-content/div/div[2]/form/div/button/span");
     }
 }

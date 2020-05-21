@@ -65,11 +65,21 @@ public class DriverWrapper {
         return driver.getTitle();
     }
 
+    /**
+     * Customized method for finding elements.<br>
+     * It waits {@value TestConfiguration#WAIT_TIME_IN_SECONDS_BEFORE_TEST_FAILS} seconds before failing, so that
+     * view can load without any issues.
+     */
     public List<WebElement> findElements(By by) {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
         return driver.findElements(by);
     }
 
+    /**
+     * Customized method for finding element.<br>
+     * It waits {@value TestConfiguration#WAIT_TIME_IN_SECONDS_BEFORE_TEST_FAILS} seconds before failing, so that
+     * view can load without any issues.
+     */
     public WebElement findElement(By by) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return driver.findElement(by);
@@ -105,5 +115,9 @@ public class DriverWrapper {
 
     public WebDriver.Options manage() {
         return driver.manage();
+    }
+
+    public String getText(String xPath) {
+        return findElement(By.xpath(xPath)).getText();
     }
 }
