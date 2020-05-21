@@ -1,9 +1,13 @@
 package pl.edu.pja.prz;
 
 import org.openqa.selenium.By;
+import pl.edu.pja.prz.config.TestConfiguration;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pl.edu.pja.prz.config.Constants.CHROME_WEB_DRIVER;
+import static pl.edu.pja.prz.config.Constants.USER_DIRECTORY;
+import static pl.edu.pja.prz.config.TestConfiguration.CHROME_DRIVER_RELATIVE_PATH;
 
 /**
  * Each test class should extend this class.
@@ -13,8 +17,8 @@ public abstract class BaseAutomationTest {
     protected DriverWrapper driver;
 
     public BaseAutomationTest() {
-        String userDirectory = System.getProperty("user.dir");
-        System.setProperty("webdriver.chrome.driver", userDirectory + TestConfiguration.CHROME_DRIVER_RELATIVE_PATH);
+        String userDirectory = System.getProperty(USER_DIRECTORY);
+        System.setProperty(CHROME_WEB_DRIVER, userDirectory + CHROME_DRIVER_RELATIVE_PATH);
     }
 
     public void initializeDriver() {

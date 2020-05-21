@@ -6,11 +6,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pl.edu.pja.prz.config.TestConfiguration;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
+
+import static pl.edu.pja.prz.config.ChromeOptions.START_MAXIMIZED;
+import static pl.edu.pja.prz.config.Constants.USER_DIRECTORY;
+import static pl.edu.pja.prz.config.TestConfiguration.*;
 
 /**
  * pl.edu.pja.prz.DriverWrapper - delegates already existing WebDriver methods and adds custom methods.
@@ -22,19 +27,19 @@ public class DriverWrapper {
 
     public DriverWrapper() {
         driver = new ChromeDriver(getChromeOptions());
-        wait = new WebDriverWait(driver, TestConfiguration.WAIT_TIME_IN_SECONDS_BEFORE_TEST_FAILS);
+        wait = new WebDriverWait(driver, WAIT_TIME_IN_SECONDS_BEFORE_TEST_FAILS);
     }
 
     public ChromeOptions getChromeOptions() {
         ChromeOptions co = new ChromeOptions();
-        co.addArguments("--start-maximized");
+        co.addArguments(START_MAXIMIZED);
         return co;
     }
 
     public void makeScreenShot(String name) throws IOException {
-        String resourcesDirectory = System.getProperty("user.dir") + "\\src\\test\\resources\\selenium\\screenshots";
+        String resourcesDirectory = System.getProperty(USER_DIRECTORY) + SCREEN_SHOTS_FOLDER_RELATIVE_PATH;
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File(resourcesDirectory + name + ".jpg"));
+        FileUtils.copyFile(scrFile, new File(resourcesDirectory + name + JPG_FORMAT));
     }
 
     public void clickElementByXPath(String xPath) {

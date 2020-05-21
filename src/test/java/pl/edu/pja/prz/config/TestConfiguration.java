@@ -1,4 +1,4 @@
-package pl.edu.pja.prz;
+package pl.edu.pja.prz.config;
 
 public class TestConfiguration {
 
@@ -11,6 +11,16 @@ public class TestConfiguration {
      * Realative path to Google Web Chrome Driver
      */
     public static final String CHROME_DRIVER_RELATIVE_PATH = "\\src\\test\\resources\\selenium\\chromedriver.exe";
+
+    /**
+     * Path where screenshots created during test execution will be placed
+     */
+    public static final String SCREEN_SHOTS_FOLDER_RELATIVE_PATH = "\\src\\test\\resources\\selenium\\screenshots";
+
+    /**
+     * File format in which screen shots will be created
+     */
+    public static final String JPG_FORMAT = ".jpg";
 
     /**
      * Login page of tested application. It is the starting point for each test case
