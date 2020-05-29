@@ -3,11 +3,12 @@ package pl.edu.pja.prz.guardian.child;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pl.edu.pja.prz.BaseAutomationTest;
 import pl.edu.pja.prz.TestCase;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ChildTest extends BaseAutomationTest {
     public static final int PESEL_LENGTH = 11;
@@ -68,5 +69,16 @@ public class ChildTest extends BaseAutomationTest {
 
         String absenceDate = driver.getText("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-children-details/div/div[2]/div/div[3]/mat-table/mat-row/mat-cell[1]");
         assertEquals(DATE_LENGTH, absenceDate.length());
+    }
+
+    @Test
+    @TestCase("PT_47")
+    public void Should_NotAllowToDeleteOlderAbsence() {
+        // Child button
+        driver.clickByXPath("/html/body/app-root/app-guardian/div/mat-card/div[1]/div/mat-card/div/div[2]/app-navbar/div/div[2]/div/button");
+        // Delete button
+        WebElement deleteButton = driver.findElement(By.xpath("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-children-details/div/div[2]/div/div[3]/mat-table/mat-row/mat-cell[3]/button"));
+        // Check if delete button is disabled
+        assertFalse(deleteButton.isEnabled());
     }
 }
