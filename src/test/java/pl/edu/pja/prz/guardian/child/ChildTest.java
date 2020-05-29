@@ -56,4 +56,17 @@ public class ChildTest extends BaseAutomationTest {
         String city = driver.getText("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-children-details/div/div[1]/div/div/div[3]/div/div[3]/div/div[2]");
         assertTrue(city.length() > 0);
     }
+
+    @Test
+    @TestCase("PT_43")
+    public void Should_CheckChildAbsences() {
+        // Child button
+        driver.clickByXPath("/html/body/app-root/app-guardian/div/mat-card/div[1]/div/mat-card/div/div[2]/app-navbar/div/div[2]/div/button");
+        // Absence
+        String reason = driver.getText("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-children-details/div/div[2]/div/div[3]/mat-table/mat-row/mat-cell[2]");
+        assertEquals("Choroba", reason);
+
+        String absenceDate = driver.getText("/html/body/app-root/app-guardian/div/mat-card/div[2]/div/mat-card/div/div[2]/app-children-details/div/div[2]/div/div[3]/mat-table/mat-row/mat-cell[1]");
+        assertEquals(DATE_LENGTH, absenceDate.length());
+    }
 }
